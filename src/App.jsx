@@ -1,5 +1,6 @@
 import TenisCard from "./assets/teniscard.png";
 import LayeBanner from "./assets/layerbanner.png";
+import CardProduto from "./components/CardProduto";
 
 export default function App() {
   return (
