@@ -7,7 +7,7 @@ export default function CardProduto() {
                     <img
                       className="w-[200px] mb-5 rounded shadow-md bg-white"
                       src={TenisCard}
-                      alt="tenis nike"
+                      alt="tenis"
                     />
                     <h3 className="text-left text-[12px] text-[#8f8f8f] font-semibold">
                       Tênis
