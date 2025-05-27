@@ -1,4 +1,3 @@
-import TenisCard from "./assets/teniscard.png";
 
 export default function CardProduto() {
     return (
