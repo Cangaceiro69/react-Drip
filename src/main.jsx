@@ -8,7 +8,7 @@ import ProductDisplay from './components/ProductDisplay.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ProductDisplay/>
+    {/* <ProductDisplay/>  */}
     <Carrossel/>
     <App />
     <Footer/>
