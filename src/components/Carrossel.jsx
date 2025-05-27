@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import slide1 from "./assets/produc-image-5.jpeg";
-import slide2 from "./assets/home-slide-1.jpeg";
-import slide3 from "./assets/home-slide-3.jpeg";
-import slide4 from "./assets/home-slide-4.jpeg";
+import slide1 from "../assets/produc-image-5.jpeg";
+import slide2 from "../assets/home-slide-1.jpeg";
+import slide3 from "../assets/home-slide-3.jpeg";
+import slide4 from "../assets/home-slide-4.jpeg";
 
 const slides = [
   {
@@ -17,7 +17,7 @@ const slides = [
   { type: "image", image: slide4 },
 ];
 
-function App() {
+export default function Carrossel() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -86,5 +86,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
