@@ -63,7 +63,7 @@ export default function Colecao() {
         <div className="flex flex-row justify-center items-center gap-8">
           {/* Ícones e textos */}
           <div>
-            <img src="/path/to/tshirt.svg" alt="camisa" />
+            <img src="{camisa}" alt="camisa" />
             <h3>Camisetas</h3>
           </div>
           <div>
@@ -72,7 +72,7 @@ export default function Colecao() {
           </div>
           <div>
             <img src="https://client-drip-store.vercel.app/assets/iconPants-d98ecbda.svg" alt="bonés" />
-            <h3>Bonês</h3>
+            <h3>Bonés</h3>
           </div>
           <div>
             <img src="https://raw.githubusercontent.com/jotaveeo/imagens-projeto/601c2710ccb0ec8691c19239260f071ab3d5033c/public/headphones_1.svg" alt="headphones" />
