@@ -2,7 +2,7 @@
 export default function CardProduto() {
     return (
         <div className="w-[250px] p-5 text-[18px] text-[#474747] bg-[#f9f8fe]">
-                    <span className="desconto">30% OFF</span>
+                    <span className="">30% OFF</span>
                     <img
                       className="w-[200px] mb-5 rounded shadow-md bg-white"
                       src={TenisCard}
