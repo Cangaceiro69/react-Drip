@@ -6,10 +6,12 @@ import Footer from "./components/Footer.jsx";
 import Carrossel from "./components/Carrossel.jsx";
 import ProductDisplay from "./components/ProductDisplay.jsx";
 import Colecao from "./components/Colecao.jsx";
+import Header from "./components/Header.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <ProductDisplay /> */}
+    <Header />
     <Carrossel />
     <Colecao />
     <App />
