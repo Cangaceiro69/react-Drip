@@ -6,11 +6,11 @@ export default function App() {
   return (
     <div className="m-0 p-0 font-sans bg-[#f9f8fe]">
       <section className="py-10 px-5">
-        <h2>Produtos em alta</h2>
+        <h2 className="text-[#474747] text-xl font-semibold mb-6 ">Produtos em alta</h2>
 
-        <div className="flex flex-wrap gap-8 justify-center max-w-[1200px] mx-auto">
+        <div className="relative flex flex-wrap gap-8 justify-center max-w-[1200px] mx-auto">
           <div className="w-[250px] p-5 text-[18px] text-[#474747] bg-[#f9f8fe]">
-            <span className="">30% OFF</span>
+            <span className="absolute mt-3 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">30% OFF</span>
             <img
               className="w-[200px] mb-5 rounded shadow-md bg-white"
               src={TenisCard}
@@ -31,7 +31,7 @@ export default function App() {
           </div>
 
           <div className="w-[250px] p-5 text-[18px] text-[#474747] bg-[#f9f8fe]">
-            <span className="">30% OFF</span>
+            <span className="absolute mt-3 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">30% OFF</span>
             <img
               className="w-[200px] mb-5 rounded shadow-md bg-white"
               src={TenisCard}
