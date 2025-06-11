@@ -1,108 +1,117 @@
+import logo from "../assets/logo-footer.svg";
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12 p-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Logo e Descrição */}
+    <footer className="bg-[#1A1A1A] text-white px-10 py-12 text-sm">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        {/* Coluna 1 - Logo e descrição */}
         <div>
-          <h2 className="text-3xl font-bold mb-4">Drip Store</h2>
-          <p className="text-gray-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-            sequi, magnam quibusdam inventore doloribus hic cupiditate culpa
-            nostrum excepturi! Quibusdam quisquam natus totam sapiente cumque
-            tempora, doloremque corrupti eum sed.
+          <div className="flex items-center gap-2 mb-4">
+            <img src={logo} alt="Digital Store Logo" className="h-6 w-auto" />
+            <h2 className="text-xl font-semibold">Digital Store</h2>
+          </div>
+          <p className="text-gray-400 leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore.
           </p>
-        </div>
-
-        {/* Links Rápidos */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">Links Rápidos</h3>
-          <ul className="space-y-2">
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Início
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Produtos
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Sobre Nós
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Contato
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Ajuda */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">Ajuda</h3>
-          <ul className="space-y-2">
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Suporte
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Termos de Serviço
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                Política de Privacidade
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-400 hover:text-white">
-                FAQs
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Redes Sociais */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">Siga-nos</h3>
-          <div className="flex space-x-4">
-            {/* Facebook */}
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white"
-              aria-label="Facebook"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22.675 0H1.325C.593 0 0 ..."></path>
-              </svg>
+          <div className="flex items-center gap-4 mt-4 text-gray-400">
+            <a href="#" className="hover:text-white">
+              <i className="fab fa-facebook-f"></i>
             </a>
-            {/* Twitter */}
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white"
-              aria-label="Twitter"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 4.557c-.883.392-1.832..."></path>
-              </svg>
+            <a href="#" className="hover:text-white">
+              <i className="fab fa-instagram"></i>
             </a>
-            {/* Instagram */}
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white"
-              aria-label="Instagram"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.163c-5.488 0-9.937..."></path>
-              </svg>
+            <a href="#" className="hover:text-white">
+              <i className="fab fa-twitter"></i>
             </a>
           </div>
         </div>
+
+        {/* Coluna 2 - Informação */}
+        <div>
+          <h3 className="font-semibold mb-4">Informação</h3>
+          <ul className="text-gray-400 space-y-2">
+            <li>
+              <a href="#" className="hover:text-white">
+                Sobre Drip Store
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Segurança
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Wishlist
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Trabalhe conosco
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Meus Pedidos
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Coluna 3 - Categorias */}
+        <div>
+          <h3 className="font-semibold mb-4">Categorias</h3>
+          <ul className="text-gray-400 space-y-2">
+            <li>
+              <a href="#" className="hover:text-white">
+                Camisetas
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Calças
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Bonés
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Headphones
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Tênis
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Coluna 4 - Contato */}
+        <div>
+          <h3 className="font-semibold mb-4">Contato</h3>
+          <address className="text-gray-400 not-italic leading-relaxed">
+            Av. Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza - CE,
+            60150-161
+            <br />
+            <br />
+            (85) 3051-3411
+          </address>
+        </div>
+      </div>
+
+      {/* Linha divisória */}
+      <div className="border-t border-gray-700 mt-10 pt-4 text-center text-gray-500 text-xs">
+        © 2022 Digital College
       </div>
     </footer>
   );
