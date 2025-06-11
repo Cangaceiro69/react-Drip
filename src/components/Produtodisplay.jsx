@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img1 from "../assets/produc-image-1.jpeg";
-import img2 from "../assets/produc-image-2.jpeg";
+import img2 from "../assets/produc-image-1.jpeg";
+import img1 from "../assets/produc-image-2.jpeg";
 
 const images = [img1, img1, img1, img1, img1];
 const sizes = [39, 42, 43];
@@ -31,11 +31,15 @@ export default function ProductPage() {
             </p>
             <div className="flex gap-4 justify-center">
               <button
-                onClick={() => navigate("/carrinho")}
+                onClick={() => {
+                  console.log("Navegando para carrinho2");
+                  navigate("/carrinho2");
+                }}
                 className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 cursor-pointer"
               >
                 Ir para o carrinho
               </button>
+
               <button
                 onClick={() => setShowModal(false)}
                 className="border border-black-300 px-4 py-2 rounded hover:bg-gray-100 cursor-pointer"
@@ -50,9 +54,7 @@ export default function ProductPage() {
       {/* Breadcrumb */}
       <div className="text-sm text-gray-500 mb-4">
         Home / Produtos / Tênis / Nike /{" "}
-        <span className="text-black font-medium">
-          Tênis Nike Revolution 6 Next Nature Masculino
-        </span>
+        <span className="text-black font-medium">K-Swiss V8 - Masculino</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -89,7 +91,7 @@ export default function ProductPage() {
         {/* Informações do produto */}
         <div>
           <h1 className="text-2xl font-semibold mb-2">
-            Tênis Nike Revolution 6 Next Nature Masculino
+            K-Swiss V8 - Masculino
           </h1>
           <p className="text-sm text-gray-600 mb-2">
             Casual Nike | ref: 2349871m
@@ -98,9 +100,9 @@ export default function ProductPage() {
             ★ 4.7 <span className="text-gray-500">(200 avaliações)</span>
           </div>
           <div className="text-xl font-bold text-gray-800 mb-1">
-            R$ 219,00{" "}
+            R$ 170,00{" "}
             <span className="text-sm font-normal text-gray-400 line-through">
-              R$ 249,00
+              R$ 200,00
             </span>
           </div>
           <p className="text-sm text-gray-600 mt-2 mb-6 max-w-md">
@@ -166,9 +168,10 @@ export default function ProductPage() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {[...Array(4)].map((_, idx) => (
-            <div
+            <button
               key={idx}
-              className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition"
+              className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition text-left"
+              onClick={() => navigate("/produto")}
             >
               <div className="relative">
                 <img
@@ -183,14 +186,16 @@ export default function ProductPage() {
               <div className="p-3">
                 <p className="text-sm text-gray-500">Tênis</p>
                 <p className="text-gray-800 font-medium">
-                  K-Swiss V8 - Masculino
+                  Tênis Nike Revolution 6 Next Nature Masculino
                 </p>
                 <div className="text-sm mt-1">
-                  <span className="line-through text-gray-400 mr-2">R$200</span>
-                  <span className="text-black font-bold">R$170</span>
+                  <span className="line-through text-gray-400 mr-2">
+                    R$249,00
+                  </span>
+                  <span className="text-black font-bold">R$219,00</span>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
