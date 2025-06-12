@@ -1,12 +1,12 @@
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
-import ProdutoPage from "../components/Produtodisplay.jsx";
+import Carrinho from "../components/carrinho.jsx";
 
-export default function ProdD() {
+export default function Carr() {
   return (
     <>
       <Header />
-      <ProdutoPage />
+      <Carrinho />
       <Footer />
     </>
   );

@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 👈 importação necessária
 import productImage from "../assets/produc-image-1.jpeg";
 import relatedImage from "../assets/produc-image-2.jpeg";
 
 export default function CartPage() {
   const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate(); // 👈 inicialização do hook de navegação
+
   const unitPrice = 219;
   const originalPrice = 249;
   const discount = 30;
@@ -144,7 +147,10 @@ export default function CartPage() {
               ou 10x de R$ {(totalPrice / 10).toFixed(2).replace(".", ",")} sem
               juros
             </p>
-            <button className="w-full py-2 bg-yellow-400 text-white font-semibold rounded-md mt-2 hover:bg-white hover:text-yellow-500 border border-yellow-400 cursor-pointer">
+            <button
+              className="w-full py-2 bg-yellow-400 text-white font-semibold rounded-md mt-2 hover:bg-white hover:text-yellow-500 border border-yellow-400 cursor-pointer"
+              onClick={() => navigate("/finalizar")} // 👈 navegação correta
+            >
               Continuar
             </button>
           </div>

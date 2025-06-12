@@ -4,7 +4,7 @@ import Carrossel from "../components/Carrossel.jsx";
 import Colecao from "../components/Colecao.jsx";
 import Header from "../components/Header.jsx";
 
-function App() {
+export default function Prin() {
   return (
     <>
       <Header />
@@ -15,5 +15,3 @@ function App() {
     </>
   );
 }
-
-export default App;

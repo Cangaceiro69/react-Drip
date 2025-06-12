@@ -111,7 +111,7 @@ export default function Footer() {
 
       {/* Linha divisória */}
       <div className="border-t border-gray-700 mt-10 pt-4 text-center text-gray-500 text-xs">
-        © 2022 Digital College
+        © 2025 Digital College
       </div>
     </footer>
   );

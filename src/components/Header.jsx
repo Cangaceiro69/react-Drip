@@ -1,6 +1,6 @@
+import logo from "../assets/logo-header.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import logo from "../assets/logo-header.svg";
 
 export default function Header() {
   return (
@@ -48,10 +48,7 @@ export default function Header() {
             Entrar
           </button>
           <button className="text-pink-700 hover:text-pink-800 relative">
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              className="h-5 w-5 text-pink-700 hover:text-pink-800"
-            />
+            <FontAwesomeIcon icon={faCartShopping} className="h-5 w-5" />
           </button>
         </div>
       </div>
