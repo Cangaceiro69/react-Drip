@@ -149,7 +149,7 @@ export default function CartPage() {
             </p>
             <button
               className="w-full py-2 bg-yellow-400 text-white font-semibold rounded-md mt-2 hover:bg-white hover:text-yellow-500 border border-yellow-400 cursor-pointer"
-              onClick={() => navigate("/finalizar")} // 👈 navegação correta
+              onClick={() => navigate("/finalizar")}
             >
               Continuar
             </button>

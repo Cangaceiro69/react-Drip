@@ -5,12 +5,12 @@ export default function Colecao() {
     <div className="bg-[#f9f8fe] py-10 px-4">
       <div className="max-w-[1200px] mx-auto text-left">
         {/* Título */}
-        <p className="text-[#474747] font-semibold text-xl mb-8">
-          Coleções em Destaque
+        <p className="text-[#474747] font-semibold text-base sm:text-xl mb-4 sm:mb-8">
+          Coleções em destaque
         </p>
 
         {/* Cards das imagens */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16">
+        <div className="flex flex-col items-center gap-6 mb-16 md:flex-row md:flex-wrap md:justify-center">
           {/* CARD 1 */}
           <div className="relative w-[300px]">
             <img
@@ -21,7 +21,7 @@ export default function Colecao() {
             <span className="absolute top-2 left-4 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">
               30% OFF
             </span>
-            <button className="absolute bottom-6 left-1/4 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow">
+            <button className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow cursor-pointer">
               Comprar
             </button>
           </div>
@@ -36,7 +36,7 @@ export default function Colecao() {
             <span className="absolute top-2 left-4 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">
               30% OFF
             </span>
-            <button className="absolute bottom-6 left-1/4 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow">
+            <button className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow cursor-pointer">
               Comprar
             </button>
           </div>
@@ -51,7 +51,7 @@ export default function Colecao() {
             <span className="absolute top-2 left-4 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">
               30% OFF
             </span>
-            <button className="absolute bottom-6 left-1/4 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow">
+            <button className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#F5F5F5] text-[#C92071] px-6 py-2 rounded font-semibold shadow cursor-pointer">
               Comprar
             </button>
           </div>

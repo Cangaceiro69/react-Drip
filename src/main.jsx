@@ -6,17 +6,21 @@ import CartPage from "./pages/carrinho.jsx";
 import Carrinho2 from "./pages/carrinho2.jsx";
 import ProdutoPage from "./pages/ProdDis2.jsx";
 import Finalizar from "./pages/finalizar.jsx";
+import Product from "./pages/Product.jsx";
+import Teste from "./pages/Teste.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <Router>
     <Routes>
+      <Route path="/Teste" element={<Teste />} />
       <Route path="/" element={<Principal />} />
       <Route path="/produto" element={<ProductPage />} />
       <Route path="/produto2" element={<ProdutoPage />} />
       <Route path="/carrinho" element={<CartPage />} />
       <Route path="/carrinho2" element={<Carrinho2 />} />
       <Route path="/finalizar" element={<Finalizar />} />
+      <Route path="/Prod" element={<Product />} />
     </Routes>
   </Router>
 );

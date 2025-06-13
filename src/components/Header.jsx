@@ -58,7 +58,7 @@ export default function Header() {
         <a href="/" className="text-pink-700 border-b-2 border-pink-700 pb-1">
           Home
         </a>
-        <a href="#" className="text-gray-700 hover:text-pink-700">
+        <a href="/Prod" className="text-gray-700 hover:text-pink-700">
           Produtos
         </a>
         <a href="#" className="text-gray-700 hover:text-pink-700">
