@@ -35,7 +35,7 @@ export default function CardProdutos() {
               className="relative w-full p-5 text-[1.125rem] text-[#474747] bg-[#f9f8fe] text-left rounded-md hover:shadow-lg transition-shadow cursor-pointer"
             >
               {/* Selo de desconto */}
-              <span className="absolute top-3 left-3 bg-[#E7FF86] text-[#474747] text-sm px-2 py-1 rounded-full font-semibold">
+              <span className="absolute top-3 left-3 bg-green-400 text-[white] text-sm px-2 py-1 rounded-full font-semibold">
                 30% OFF
               </span>
 

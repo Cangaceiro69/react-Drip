@@ -1,14 +1,9 @@
 function Checkbox() {
   return (
-    <div className="flex items-center space-x-2">
-      <input
-        type="checkbox"
-        id="normal-checkbox"
-        className="accent-[#c92071] w-5 h-5"
-      />
-      <label htmlFor="normal-checkbox" className="text-sm select-none">
-        Marcar item
-      </label>
+    <div>
+      <h1>Pagina de teste</h1>
+      <p>Use essa pagina pra testar as suas paginas</p>
+      <p>Para acessar essa pagina só digitar /Teste</p>
     </div>
   );
 }
