@@ -1,14 +1,26 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import img1 from "../assets/produc-image-1.jpeg";
 
 export default function FinalizarCompra() {
+  const navigate = useNavigate();
+
+  // Estados dos campos
+  const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
   const [celular, setCelular] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
   const [cep, setCep] = useState("");
-  const [validadeCartao, setValidadeCartao] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [titularCartao, setTitularCartao] = useState("");
   const [numeroCartao, setNumeroCartao] = useState("");
+  const [validadeCartao, setValidadeCartao] = useState("");
   const [cvv, setCvv] = useState("");
 
+  // Funções para formatar campos
   const handleCpfChange = (e) => {
     let value = e.target.value.replace(/\D/g, "").slice(0, 11);
     if (value.length > 9) {
@@ -53,6 +65,25 @@ export default function FinalizarCompra() {
     setCvv(value);
   };
 
+  // Função que leva para a página de confirmação
+  const handlePagamento = () => {
+    navigate("/compra-realizada", {
+      state: {
+        nome,
+        cpf,
+        email,
+        celular,
+        endereco,
+        bairro,
+        cidade,
+        cep,
+        complemento,
+        titularCartao,
+        finalCartao: numeroCartao.slice(-4),
+      },
+    });
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen p-8 text-sm">
       <h1 className="text-xl font-bold mb-6">Finalizar Compra</h1>
@@ -66,6 +97,8 @@ export default function FinalizarCompra() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
                 placeholder="Insira seu nome"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
@@ -78,6 +111,8 @@ export default function FinalizarCompra() {
               />
               <input
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Insira seu email"
                 type="email"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
@@ -100,16 +135,22 @@ export default function FinalizarCompra() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 required
+                value={endereco}
+                onChange={(e) => setEndereco(e.target.value)}
                 placeholder="Insira seu endereço"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
               <input
                 required
+                value={bairro}
+                onChange={(e) => setBairro(e.target.value)}
                 placeholder="Insira seu bairro"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
               <input
                 required
+                value={cidade}
+                onChange={(e) => setCidade(e.target.value)}
                 placeholder="Insira sua cidade"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
@@ -121,8 +162,10 @@ export default function FinalizarCompra() {
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
               <input
-                placeholder="Insira complemento"
-                className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400 col-span-2"
+                value={complemento}
+                onChange={(e) => setComplemento(e.target.value)}
+                placeholder="Complemento (opcional)"
+                className="border border-gray-300 px-4 py-2 rounded w-full col-span-2 outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
           </div>
@@ -133,17 +176,10 @@ export default function FinalizarCompra() {
               Informações de Pagamento
             </h2>
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-1 cursor-pointer">
-                  <input type="radio" name="pagamento" defaultChecked /> Cartão
-                  de Crédito
-                </label>
-                <label className="flex items-center gap-1 cursor-pointer">
-                  <input type="radio" name="pagamento" /> Boleto Bancário
-                </label>
-              </div>
               <input
                 required
+                value={titularCartao}
+                onChange={(e) => setTitularCartao(e.target.value)}
                 placeholder="Insira o nome do Cartão"
                 className="border border-gray-300 px-4 py-2 rounded w-full outline-none focus:ring-2 focus:ring-yellow-400"
               />
@@ -182,7 +218,10 @@ export default function FinalizarCompra() {
                 ou 10x de R$ 21,00 sem juros
               </p>
             </div>
-            <button className="mt-4 md:mt-0 bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 rounded cursor-pointer">
+            <button
+              onClick={handlePagamento}
+              className="mt-4 md:mt-0 bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 rounded cursor-pointer"
+            >
               Realizar Pagamento
             </button>
           </div>
@@ -214,7 +253,10 @@ export default function FinalizarCompra() {
             <p className="text-xs text-gray-500">
               ou 10x de R$ 21,00 sem juros
             </p>
-            <button className="w-full mt-4 bg-yellow-400 hover:bg-yellow-500 text-black py-2 rounded cursor-pointer">
+            <button
+              onClick={handlePagamento}
+              className="w-full mt-4 bg-yellow-400 hover:bg-yellow-500 text-black py-2 rounded cursor-pointer"
+            >
               Realizar Pagamento
             </button>
           </div>

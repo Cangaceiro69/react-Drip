@@ -8,12 +8,13 @@ import ProdutoPage from "./pages/ProdDis2.jsx";
 import Finalizar from "./pages/finalizar.jsx";
 import Product from "./pages/Product.jsx";
 import Teste from "./pages/Teste.jsx";
+import CompraRealizada from "./components/fim.jsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
   <Router>
     <Routes>
-      <Route path="/Teste" element={<Teste />} />
+      {/* <Route path="/Teste" element={<Teste />} /> */}
       <Route path="/" element={<Principal />} />
       <Route path="/produto" element={<ProductPage />} />
       <Route path="/produto2" element={<ProdutoPage />} />
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/carrinho2" element={<Carrinho2 />} />
       <Route path="/finalizar" element={<Finalizar />} />
       <Route path="/Prod" element={<Product />} />
+      <Route path="/compra-realizada" element={<CompraRealizada />} />
     </Routes>
   </Router>
 );

@@ -79,7 +79,7 @@ export default function CompraRealizada() {
         {/* Botões */}
         <div className="mt-6 text-center">
           <button
-            className="text-sm text-gray-500 underline"
+            className="text-sm text-gray-500 underline cursor-pointer"
             onClick={() => window.print()}
           >
             Imprimir Recibo
