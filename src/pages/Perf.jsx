@@ -1,12 +1,12 @@
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
-import Fim from "../components/fim.jsx";
+import Perfi from "../components/PerfilEPedidos.jsx";
 
 export default function Produ() {
   return (
     <>
       <Header />
-      <Fim />
+      <Perfi />
       <Footer />
     </>
   );

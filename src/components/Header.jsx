@@ -1,4 +1,5 @@
 import logo from "../assets/logo-header.svg";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,13 +42,16 @@ export default function Header() {
 
         {/* Auth and cart */}
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-sm underline text-gray-700">
+          <Link to="/Cadastro" className="text-sm underline text-gray-700">
             Cadastre-se
-          </a>
-          <button className="bg-pink-700 text-white text-sm px-4 py-2 rounded-md hover:bg-pink-800 cursor-pointer">
+          </Link>
+          <Link
+            to="/Login"
+            className="bg-pink-700 text-white text-sm px-4 py-2 rounded-md hover:bg-pink-800 cursor-pointer"
+          >
             Entrar
-          </button>
-          <button className="text-pink-700 hover:text-pink-800 relative">
+          </Link>
+          <button className="text-pink-700 hover:text-pink-800 relative cursor-pointer">
             <FontAwesomeIcon icon={faCartShopping} className="h-5 w-5" />
           </button>
         </div>
@@ -64,7 +68,7 @@ export default function Header() {
         <a href="#" className="text-gray-700 hover:text-pink-700">
           Categorias
         </a>
-        <a href="#" className="text-gray-700 hover:text-pink-700">
+        <a href="/Perfil" className="text-gray-700 hover:text-pink-700">
           Meus Pedidos
         </a>
       </nav>

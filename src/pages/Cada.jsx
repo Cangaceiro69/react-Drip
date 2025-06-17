@@ -1,12 +1,12 @@
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
-import Teste from "../components/Teste.jsx";
+import Cadas from "../components/Cada.jsx";
 
 export default function Produ() {
   return (
     <>
       <Header />
-      <Teste />
+      <Cadas />
       <Footer />
     </>
   );
