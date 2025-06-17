@@ -3,8 +3,6 @@ import { createRoot } from "react-dom/client";
 import Principal from "./pages/Principal.jsx";
 import ProductPage from "./pages/ProdDis.jsx";
 import CartPage from "./pages/carrinho.jsx";
-import Carrinho2 from "./pages/carrinho2.jsx";
-import ProdutoPage from "./pages/ProdDis2.jsx";
 import Finalizar from "./pages/finalizar.jsx";
 import Product from "./pages/Product.jsx";
 import CompraRealizada from "./pages/fim.jsx";
@@ -19,9 +17,7 @@ createRoot(document.getElementById("root")).render(
     <Routes>
       <Route path="/" element={<Principal />} />
       <Route path="/Produto" element={<ProductPage />} />
-      <Route path="/Produto2" element={<ProdutoPage />} />
       <Route path="/Carrinho" element={<CartPage />} />
-      <Route path="/Carrinho2" element={<Carrinho2 />} />
       <Route path="/finalizar" element={<Finalizar />} />
       <Route path="/Prod" element={<Product />} />
       <Route path="/Compra-realizada" element={<CompraRealizada />} />

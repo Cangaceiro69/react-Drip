@@ -1,18 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import img1 from "../assets/produc-image-1.jpeg";
-import img2 from "../assets/produc-image-2.jpeg";
-
-const images = [img1, img1, img1, img1, img1];
-const sizes = [39, 42, 43];
-const colors = ["bg-pink-500", "bg-cyan-500", "bg-purple-800"];
 
 export default function ProductPage() {
+  const [product, setProduct] = useState(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Exemplo de fetch simulando chamada ao backend
+    async function fetchProduct() {
+      try {
+        const response = await fetch("https://api.exemplo.com/produto/123"); // substitua pela sua API real
+        const data = await response.json();
+
+        // Supondo que a API retorne um objeto com essa estrutura:
+        // {
+        //   name: "Tênis Nike Revolution 6 Next Nature Masculino",
+        //   ref: "2349871m",
+        //   rating: 4.7,
+        //   reviews: 200,
+        //   price: 219,
+        //   oldPrice: 249,
+        //   description: "Lorem ipsum...",
+        //   images: ["url1.jpg", "url2.jpg", "url3.jpg"],
+        //   sizes: [39, 42, 43],
+        //   colors: ["bg-pink-500", "bg-cyan-500", "bg-purple-800"]
+        // }
+
+        setProduct(data);
+        setSelectedSize(data.sizes ? data.sizes[0] : null);
+        setSelectedColor(data.colors ? data.colors[0] : null);
+      } catch (error) {
+        console.error("Erro ao carregar produto:", error);
+      }
+    }
+
+    fetchProduct();
+  }, []);
+
+  if (!product) {
+    return <div className="p-8 max-w-7xl mx-auto">Carregando produto...</div>;
+  }
 
   return (
     <div className="p-8 max-w-7xl mx-auto relative">
@@ -50,9 +81,7 @@ export default function ProductPage() {
       {/* Breadcrumb */}
       <div className="text-sm text-gray-500 mb-4">
         Home / Produtos / Tênis / Nike /{" "}
-        <span className="text-black font-medium">
-          Tênis Nike Revolution 6 Next Nature Masculino
-        </span>
+        <span className="text-black font-medium">{product.name}</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -60,13 +89,13 @@ export default function ProductPage() {
         <div>
           <div className="bg-violet-100 rounded-lg overflow-hidden w-full aspect-square flex items-center justify-center">
             <img
-              src={images[selectedImageIndex]}
-              alt="Imagem do Produto"
+              src={product.images[selectedImageIndex]}
+              alt={`Imagem do Produto - ${selectedImageIndex + 1}`}
               className="object-contain max-h-full"
             />
           </div>
           <div className="flex gap-4 mt-4">
-            {images.map((img, idx) => (
+            {product.images.map((img, idx) => (
               <div
                 key={idx}
                 onClick={() => setSelectedImageIndex(idx)}
@@ -88,31 +117,31 @@ export default function ProductPage() {
 
         {/* Informações do produto */}
         <div>
-          <h1 className="text-2xl font-semibold mb-2">
-            Tênis Nike Revolution 6 Next Nature Masculino
-          </h1>
+          <h1 className="text-2xl font-semibold mb-2">{product.name}</h1>
           <p className="text-sm text-gray-600 mb-2">
-            Casual Nike | ref: 2349871m
+            Casual Nike | ref: {product.ref}
           </p>
           <div className="flex items-center gap-1 text-sm text-yellow-500 mb-2">
-            ★ 4.7 <span className="text-gray-500">(200 avaliações)</span>
+            ★ {product.rating}{" "}
+            <span className="text-gray-500">
+              ({product.reviews} avaliações)
+            </span>
           </div>
           <div className="text-xl font-bold text-gray-800 mb-1">
-            R$ 219,00{" "}
+            R$ {product.price.toFixed(2).replace(".", ",")}{" "}
             <span className="text-sm font-normal text-gray-400 line-through">
-              R$ 249,00
+              R$ {product.oldPrice.toFixed(2).replace(".", ",")}
             </span>
           </div>
           <p className="text-sm text-gray-600 mt-2 mb-6 max-w-md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {product.description}
           </p>
 
           {/* Tamanhos */}
           <div className="mb-4">
             <p className="mb-2 font-medium">Tamanho</p>
             <div className="flex gap-2">
-              {sizes.map((size) => (
+              {product.sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
@@ -132,7 +161,7 @@ export default function ProductPage() {
           <div className="mb-4">
             <p className="mb-2 font-medium">Cor</p>
             <div className="flex gap-3">
-              {colors.map((color) => (
+              {product.colors.map((color) => (
                 <button
                   key={color}
                   onClick={() => setSelectedColor(color)}
@@ -155,7 +184,7 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* Produtos relacionados */}
+      {/* Produtos relacionados - para manter simples deixei estático */}
       <div className="mt-16">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-semibold">Produtos Relacionados</h2>
@@ -169,11 +198,11 @@ export default function ProductPage() {
             <button
               key={idx}
               className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm cursor-pointer hover:shadow-md transition text-left"
-              onClick={() => navigate("/produto2")} // Navega para a página produto2
+              onClick={() => navigate("/produto2")}
             >
               <div className="relative">
                 <img
-                  src={img2}
+                  src="https://via.placeholder.com/300" // Pode trocar pela URL real do backend
                   alt="Tênis"
                   className="w-full object-cover aspect-square"
                 />

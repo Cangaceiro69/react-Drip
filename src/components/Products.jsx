@@ -1,11 +1,32 @@
 import { useNavigate } from "react-router-dom";
-import TenisCard from "../assets/produc-image-1.jpeg";
+import { useState, useEffect } from "react";
 
 export default function Produtos() {
   const navigate = useNavigate();
+  const [produtos, setProdutos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleProdutoClick = () => {
-    navigate("/produto");
+  // Simulando endpoint do backend para pegar produtos
+  useEffect(() => {
+    async function fetchProdutos() {
+      try {
+        const response = await fetch("https://api.exemplo.com/produtos"); // Substitua pela URL real do backend
+        if (!response.ok) throw new Error("Erro ao buscar produtos");
+        const data = await response.json();
+        setProdutos(data);
+      } catch (error) {
+        console.error(error);
+        setProdutos([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProdutos();
+  }, []);
+
+  const handleProdutoClick = (produtoId) => {
+    navigate(`/produto/${produtoId}`);
   };
 
   return (
@@ -50,7 +71,7 @@ export default function Produtos() {
         {/* Topo com quantidade e ordenação */}
         <div className="flex items-center justify-between mb-8">
           <p className="text-sm text-[#474747] font-semibold">
-            Resultados para "Tênis" - 328 produtos
+            Resultados para "Tênis" - {produtos.length} produtos
           </p>
 
           <select className="border border-gray-300 rounded px-3 py-2 text-sm">
@@ -61,39 +82,45 @@ export default function Produtos() {
           </select>
         </div>
 
-        {/* Grid de produtos */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[...Array(16)].map((_, idx) => (
-            <div
-              key={idx}
-              onClick={handleProdutoClick}
-              className="relative w-full p-5 text-[1.125rem] text-[#474747] bg-[#f9f8fe] text-left rounded-md hover:shadow-lg transition-shadow cursor-pointer"
-            >
-              {/* Selo de desconto */}
-              <span className="absolute top-3 left-3 bg-green-400 text-white text-sm px-2 py-1 rounded-full font-semibold">
-                30% OFF
-              </span>
+        {loading ? (
+          <p>Carregando produtos...</p>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {produtos.map((produto) => (
+              <div
+                key={produto.id}
+                onClick={() => handleProdutoClick(produto.id)}
+                className="relative w-full p-5 text-[1.125rem] text-[#474747] bg-[#f9f8fe] text-left rounded-md hover:shadow-lg transition-shadow cursor-pointer"
+              >
+                {produto.descontoPercentual && (
+                  <span className="absolute top-3 left-3 bg-green-400 text-white text-sm px-2 py-1 rounded-full font-semibold">
+                    {produto.descontoPercentual}% OFF
+                  </span>
+                )}
 
-              {/* Imagem */}
-              <img
-                className="w-full max-w-[12.5rem] mb-5 rounded shadow-md bg-white mx-auto"
-                src={TenisCard}
-                alt="Tênis"
-              />
+                <img
+                  className="w-full max-w-[12.5rem] mb-5 rounded shadow-md bg-white mx-auto"
+                  src={produto.imagemUrl}
+                  alt={produto.nome}
+                />
 
-              {/* Informações */}
-              <h3 className="text-[0.75rem] text-[#8f8f8f] font-semibold">
-                Tênis Nike Revolution 6 Next Nature Masculino
-              </h3>
-              <p className="text-sm leading-snug">
-                <span className="line-through mr-1 text-[#8f8f8f]">
-                  $249,00
-                </span>
-                <span className="font-semibold text-black">$219,00</span>
-              </p>
-            </div>
-          ))}
-        </div>
+                <h3 className="text-[0.75rem] text-[#8f8f8f] font-semibold">
+                  {produto.nome}
+                </h3>
+                <p className="text-sm leading-snug">
+                  {produto.precoAntigo && (
+                    <span className="line-through mr-1 text-[#8f8f8f]">
+                      ${produto.precoAntigo.toFixed(2)}
+                    </span>
+                  )}
+                  <span className="font-semibold text-black">
+                    ${produto.precoAtual.toFixed(2)}
+                  </span>
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

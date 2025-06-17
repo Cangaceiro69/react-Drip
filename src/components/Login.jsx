@@ -1,12 +1,45 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import tenis from "../assets/teniscard.png";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const response = await fetch("http://seu-backend.com/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha }),
+      });
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      const data = await response.json();
+      console.log("Login bem-sucedido:", data);
+
+      // Exemplo: salvar token se houver
+      // localStorage.setItem("token", data.token);
+
+      navigate("/");
+    } catch {
+      setError("Erro no login. Por favor, verifique suas credenciais.");
+    }
+  };
+
   return (
     <main className="bg-gradient-to-r from-[#EFEFFF] to-[#B5B6F2] flex flex-col md:flex-row px-6 md:px-20 py-10 gap-10 min-h-screen">
       {/* Formulário */}
       <div className="shadow p-10 w-full max-w-2xl mx-auto bg-white border-2 hover:border-blue-500 rounded-sm">
-        <form className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-5">
           <h1 className="text-4xl font-bold mb-6 px-6 mt-6 text-black">
             Acesse sua conta
           </h1>
@@ -27,6 +60,8 @@ export default function Login() {
             </label>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Insira seu login ou email"
               className="rounded-sm w-full bg-gray-100 border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-black"
               required
@@ -39,6 +74,8 @@ export default function Login() {
             </label>
             <input
               type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
               placeholder="Insira sua senha"
               className="rounded-sm w-full bg-gray-100 border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-black"
               required
@@ -58,6 +95,12 @@ export default function Login() {
           >
             Acessar Conta
           </button>
+
+          {error && (
+            <p className="text-red-600 font-semibold text-center mt-2">
+              {error}
+            </p>
+          )}
 
           <div className="mt-6">
             <p className="text-gray-600 font-medium mb-3 text-center">

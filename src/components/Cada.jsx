@@ -1,12 +1,22 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import tenisImg from "../assets/teniscard.png";
 
 const FormularioConta = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // envia o email para a próxima página
+    navigate("/Cadastro-form", { state: { email } });
+  };
+
   return (
     <div className="flex flex-col md:flex-row px-6 md:px-20 py-10 gap-10 bg-gradient-to-r from-[#EFEFFF] to-[#B5B6F2]">
-      {/* Formulário */}
       <div className="shadow p-10 w-full max-w-2xl mx-auto bg-white border-2 hover:border-blue-500 rounded-sm">
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <h1 className="text-4xl font-bold mb-6 px-6 mt-6 text-black">
             Crie sua conta
           </h1>
@@ -28,6 +38,8 @@ const FormularioConta = () => {
             <input
               type="email"
               placeholder="Insira seu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="rounded-sm w-full bg-gray-100 border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-black"
               required
             />
@@ -62,7 +74,6 @@ const FormularioConta = () => {
         </form>
       </div>
 
-      {/* Imagem lateral */}
       <div className="w-full md:w-[35em] h-[35rem] flex items-center justify-center">
         <img
           src={tenisImg}
